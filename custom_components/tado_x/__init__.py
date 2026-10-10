@@ -311,7 +311,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
         try:
             await coordinator.api.set_eiq_tariff(tariff, unit, start_date, end_date)
-            _LOGGER.info("EIQ tariff %.2f %s set successfully", tariff, unit)
+            _LOGGER.info("EIQ tariff %s %s set successfully", tariff, unit)
         except TadoXApiError as err:
             _LOGGER.error("Failed to set EIQ tariff: %s", err)
             raise HomeAssistantError(f"Failed to set EIQ tariff: {err}") from err
