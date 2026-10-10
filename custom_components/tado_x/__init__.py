@@ -781,7 +781,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 tariff, unit, start_date, end_date
             )
             _LOGGER.info(
-                "EIQ tariff %.2f %s set successfully for home %s",
+                "EIQ tariff %s %s set successfully for home %s",
                 tariff,
                 unit,
                 service_coordinator.home_id,
