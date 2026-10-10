@@ -51,14 +51,14 @@ set_eiq_tariff:
   fields:
     tariff:
       name: Tariff
-      description: Price per unit (e.g., 0.85 for €0.85/m³)
+      description: Price per unit in the main currency unit, up to 4 decimal places (e.g., 0.85 for €0.85/m³, 0.245 for 24.5p/kWh)
       required: true
       example: 0.85
       selector:
         number:
           min: 0
           max: 100
-          step: 0.01
+          step: 0.0001
           mode: box
     unit:
       name: Unit

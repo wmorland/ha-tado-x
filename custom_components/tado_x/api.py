@@ -685,7 +685,12 @@ class TadoXApi:
 
         from datetime import date as date_module
 
-        tariff_in_cents = int(tariff * 100)
+        # Round instead of int(): int() truncates float error (0.29 * 100 ->
+        # 28.999...) down to 28. Keep up to 2dp of cents so sub-unit tariffs
+        # such as 24.5p/kWh survive, and send whole values as int.
+        tariff_in_cents: int | float = round(tariff * 100, 2)
+        if tariff_in_cents.is_integer():
+            tariff_in_cents = int(tariff_in_cents)
         payload: dict = {
             "tariffInCents": tariff_in_cents,
             "unit": unit,
